@@ -6,12 +6,12 @@ import {ApiService} from '../../services/api.service';
 
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   map;
   baseMaps;

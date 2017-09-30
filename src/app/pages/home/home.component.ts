@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   map;
   baseMaps;
+  geojsonLayer;
 
 
   constructor(public api: ApiService) {
@@ -28,12 +29,14 @@ export class HomeComponent implements OnInit {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         })
     };
+
     this.map = L.map("map");
     this.baseMaps.CartoDB.addTo(this.map);
     this.map.setView([40.28, -76.89], 8);
 
     this.api.getData().then(data => {
-      L.geoJSON(data).addTo(this.map);
+      this.geojsonLayer = L.geoJson(data).addTo(this.map);
+      this.map.fitBounds(this.geojsonLayer.getBounds());
     })
 
   }

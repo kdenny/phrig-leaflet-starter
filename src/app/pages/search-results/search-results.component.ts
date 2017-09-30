@@ -6,12 +6,12 @@ import {ApiService} from '../../services/api.service';
 
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class SearchResultsComponent implements OnInit {
 
   map;
   baseMaps;
