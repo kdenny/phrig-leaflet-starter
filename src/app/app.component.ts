@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MapsComponent } from './pages/maps/maps.component';
 
 @Component({
   selector: 'app-root',

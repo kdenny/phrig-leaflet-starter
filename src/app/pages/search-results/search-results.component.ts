@@ -4,6 +4,8 @@ import 'leaflet';
 
 import {ApiService} from '../../services/api.service';
 
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'search-results',
@@ -17,7 +19,7 @@ export class SearchResultsComponent implements OnInit {
   baseMaps;
 
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, private router: Router) {
 
   }
 
@@ -28,14 +30,34 @@ export class SearchResultsComponent implements OnInit {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         })
     };
+
     this.map = L.map("map");
     this.baseMaps.CartoDB.addTo(this.map);
-    this.map.setView([40.28, -76.89], 8);
 
     this.api.getData().then(data => {
-      L.geoJSON(data).addTo(this.map);
+
+      this.layerGroup = L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup('' +
+            '<h1>District '+feature.properties.LEG_DISTRI+'</h1>' +
+            '<p>Name: '+feature.properties.H_LASTNAME+' '+feature.properties.H_FIRSTNAM+'</p>' +
+            '<p>Party: '+feature.properties.PARTY+'</p>'
+          );
+        }
+      }).addTo(this.map);
+
+      this.map.fitBounds(this.layerGroup.getBounds());
+
     })
 
+  }
+
+  goHome() {
+    this.router.navigate(['/home']);
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
 
 }

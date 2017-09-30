@@ -4,6 +4,8 @@ import 'leaflet';
 
 import {ApiService} from '../../services/api.service';
 
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'home',
@@ -15,11 +17,17 @@ export class HomeComponent implements OnInit {
 
   map;
   baseMaps;
-  geojsonLayer;
+  layerGroup;
+  showMap;
 
+  constructor(public api: ApiService, private router: Router) {
 
-  constructor(public api: ApiService) {
+  }
 
+  printData(data) {
+    data.forEach(datum => {
+      console.log(datum)
+    })
   }
 
   ngOnInit() {
@@ -32,13 +40,27 @@ export class HomeComponent implements OnInit {
 
     this.map = L.map("map");
     this.baseMaps.CartoDB.addTo(this.map);
-    this.map.setView([40.28, -76.89], 8);
 
     this.api.getData().then(data => {
-      this.geojsonLayer = L.geoJson(data).addTo(this.map);
-      this.map.fitBounds(this.geojsonLayer.getBounds());
+
+      this.layerGroup = L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup('' +
+            '<h1>District '+feature.properties.LEG_DISTRI+'</h1>' +
+            '<p>Name: '+feature.properties.H_LASTNAME+' '+feature.properties.H_FIRSTNAM+'</p>' +
+            '<p>Party: '+feature.properties.PARTY+'</p>'
+          );
+        }
+      }).addTo(this.map);
+
+      this.map.fitBounds(this.layerGroup.getBounds());
+
     })
 
+  }
+
+  redirect() {
+    this.router.navigate(['/results']);
   }
 
 }

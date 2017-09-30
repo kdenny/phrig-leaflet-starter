@@ -4,6 +4,9 @@ import 'leaflet';
 
 import {ApiService} from '../../services/api.service';
 
+import {Router} from '@angular/router';
+
+
 
 @Component({
   selector: 'profile',
@@ -17,7 +20,7 @@ export class ProfileComponent implements OnInit {
   baseMaps;
 
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, private router: Router) {
 
   }
 
@@ -36,6 +39,10 @@ export class ProfileComponent implements OnInit {
       L.geoJSON(data).addTo(this.map);
     })
 
+  }
+
+  goBack() {
+    this.router.navigate(['/results']);
   }
 
 }

@@ -15,6 +15,10 @@
   width: 25vw;
 }
 
+.search-pane {
+  margin-top: 20px;
+}
+
 .row {
   margin-left: 20px;
 }
