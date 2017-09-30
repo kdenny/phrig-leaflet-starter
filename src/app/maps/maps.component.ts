@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import 'leaflet';
 
+import {ApiService} from '../services/api.service';
+
 
 @Component({
   selector: 'maps',
@@ -14,7 +16,7 @@ export class MapsComponent implements OnInit {
   map;
   baseMaps;
 
-  constructor() {
+  constructor(public api: ApiService) {
 
   }
 
@@ -26,7 +28,11 @@ export class MapsComponent implements OnInit {
         };
         this.map = L.map("map");
         this.baseMaps.CartoDB.addTo(this.map);
-        this.map.setView([51.505, -0.09], 13);
+        this.map.setView([41.23, -74], 8);
+
+        this.api.getData().then(data => {
+          L.geoJSON(data).addTo(this.map);
+        })
 
   }
 
