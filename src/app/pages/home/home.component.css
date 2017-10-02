@@ -1,3 +1,29 @@
+.navbar.primary{
+  background: #002A86;
+}
+
+.loc-btn {
+  width: 3vw;
+}
+
+.logo {
+  height: 125px;
+  display: inline-block;
+  margin-top: -45px;
+}
+
+h1 {
+  display: inline-block;
+  margin-left: 10px;
+  padding-top: 15px;
+  font-size: 3.5rem;
+}
+
+small {
+  display: inline-block;
+}
+
+
 .add-on .input-group-btn > .btn {
   border-left-width:0;left:-2px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -24,3 +50,29 @@
 }
 
 .form-control{width:25%}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar-brand {
+  line-height:24px;
+  padding-top:10px;
+  padding-bottom:5px;
+  color: #82CCE2;
+}
+
+.navbar-brand small {
+  display:block;
+  font-size:22px;
+  margin-top: 10px;
+  color: #FFCE00;
+}
+
+.nav-logo {
+  margin-left: 20px;
+}
+
+.search-text {
+  width: 18vw;
+}
