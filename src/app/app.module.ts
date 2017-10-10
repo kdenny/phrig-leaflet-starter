@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,12 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCGkffnTSjs9i0PpPXthYJ93TBSJhJHEnQ",
+      libraries: ["places"]
+    }),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

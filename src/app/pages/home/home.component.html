@@ -6,11 +6,12 @@
       <a class="navbar-brand" href="#"><img class="logo" src="assets/cslogo2.png"/><h1>PA Cash Flow<small>Follow the money trail around PA politics</small></h1></a>
     </div>
   </div>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2 search-text" type="text" placeholder="Search for an address or place">
-    <!--<button class="btn loc-btn"><i class="fa fa-map-marker" aria-hidden="true"></i></button>-->
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search<i class="fa fa-search" aria-hidden="true"></i></button>
-  </form>
+  <button class="btn btn-outline-primary my-2 my-sm-0 top-btns" type="submit" (click)="getLocation()"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control search-text" #search [formControl]="searchControl">
+  </div>
+  <button class="btn btn-outline-primary my-2 my-sm-0 top-btns" type="submit" (click)="redirect()">Search<i class="fa fa-search" aria-hidden="true"></i></button>
+
 </div>
 
 <div class="row">

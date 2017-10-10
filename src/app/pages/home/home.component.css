@@ -38,7 +38,7 @@ small {
 }
 
 .input-group {
-  width: 25vw;
+  width: 30vw;
 }
 
 .search-pane {
@@ -74,5 +74,10 @@ body {
 }
 
 .search-text {
-  width: 18vw;
+  width: 12vw;
+  margin-top: 3px;
+}
+
+.top-btns {
+  display: inline-block;
 }
