@@ -11,7 +11,7 @@ export class ApiService {
 
   geoData;
   private headers = new Headers({'Content-Type': 'application/json'});
-  apiUrl = 'http://127.0.0.1:8000/geo/';
+  apiUrl = 'http://nimbuscharts.pythonanywhere.com/sheets/1qsRS5b0CEJSh44ajg1qdgPM9F_8yVMJ5m7Pk2PMvCf4/Albert/';
 
  constructor(private http: Http) {
 
