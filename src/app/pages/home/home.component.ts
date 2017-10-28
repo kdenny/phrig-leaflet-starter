@@ -70,23 +70,24 @@ export class HomeComponent implements OnInit {
     };
 
     this.map = L.map("map");
+    this.map.setView([39.952455, -75.163594], 14);
     this.baseMaps.CartoDB.addTo(this.map);
 
-    this.api.getData().then(data => {
-
-      this.layerGroup = L.geoJSON(data, {
-        onEachFeature: function (feature, layer) {
-          layer.bindPopup('' +
-            '<h1>District '+feature.properties.LEG_DISTRI+'</h1>' +
-            '<p>Name: '+feature.properties.H_LASTNAME+' '+feature.properties.H_FIRSTNAM+'</p>' +
-            '<p>Party: '+feature.properties.PARTY+'</p>'
-          );
-        }
-      }).addTo(this.map);
-
-      this.map.fitBounds(this.layerGroup.getBounds());
-
-    })
+    //this.api.getData().then(data => {
+    //
+    //  this.layerGroup = L.geoJSON(data, {
+    //    onEachFeature: function (feature, layer) {
+    //      layer.bindPopup('' +
+    //        '<h1>District '+feature.properties.LEG_DISTRI+'</h1>' +
+    //        '<p>Name: '+feature.properties.H_LASTNAME+' '+feature.properties.H_FIRSTNAM+'</p>' +
+    //        '<p>Party: '+feature.properties.PARTY+'</p>'
+    //      );
+    //    }
+    //  }).addTo(this.map);
+    //
+    //  this.map.fitBounds(this.layerGroup.getBounds());
+    //
+    //})
 
   }
 

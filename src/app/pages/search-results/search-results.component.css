@@ -12,6 +12,8 @@
   margin-top: -45px;
 }
 
+
+
 h1 {
   display: inline-block;
   margin-left: 10px;
@@ -74,6 +76,28 @@ body {
 }
 
 .search-text {
-  width: 18vw;
+  width: 12vw;
+  margin-top: 15px;
+}
+
+.top-btns {
+  display: inline-block;
+}
+
+.card {
+  display: inline;
+}
+
+/*.candidate-card {*/
+  /*margin-left: 20px;*/
+/*}*/
+
+/*.candidate-card:hover {*/
+  /*background-color: yellow;*/
+/*}*/
+
+.candidate-card:hover {
+  margin-left: 20px;
+  background-color: yellow;
 }
 

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { Accordion, AccordionGroup } from './pages/search-results/accordion';
 
 import {ApiService} from './services/api.service';
 
@@ -30,7 +31,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     SearchResultsComponent,
-    ProfileComponent
+    ProfileComponent,
+    Accordion,
+    AccordionGroup
   ],
   imports: [
     BrowserModule,
