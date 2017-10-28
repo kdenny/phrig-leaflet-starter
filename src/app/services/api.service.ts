@@ -10,9 +10,10 @@ import 'rxjs/add/operator/map';
 export class ApiService {
 
   geoData;
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
   //apiUrl = 'http://127.0.0.1:8000/geo/';
   apiUrl = 'http://54.198.139.141/';
+  transactions;
 
  constructor(private http: Http) {
 
@@ -64,7 +65,7 @@ export class ApiService {
 
   return this.http.post(transactionUrl, search_query, options).toPromise()
    .then(response => {
-     console.log(response.json())
+     this.transactions = response.json().transactions;
      //this.geoData = response.json()
    })
    .catch(this.handleError)

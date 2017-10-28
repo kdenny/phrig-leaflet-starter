@@ -69,8 +69,6 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.api.getTransactions(a);
-
     this.baseMaps = {
         CartoDB: L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
@@ -78,7 +76,26 @@ export class SearchResultsComponent implements OnInit {
     };
 
     this.map = L.map("map");
+    this.map.setView([39.952455, -75.163594], 14);
     this.baseMaps.CartoDB.addTo(this.map);
+
+    this.api.getTransactions(a).then(res => {
+      this.api.transactions.forEach(tr => {
+        if (tr.point) {
+          if (tr.point.latitude && tr.point.longitude) {
+            L.circle([tr.point.latitude, tr.point.longitude], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 50
+            }).addTo(this.map);
+          }
+
+        }
+
+        console.log(tr)
+      })
+    });
 
     //this.api.getData().then(data => {
     //
