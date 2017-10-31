@@ -55,10 +55,12 @@ export class HomeComponent implements OnInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
+          let loc = {};
           //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
+          loc.latitude = place.geometry.location.lat();
+          loc.longitude = place.geometry.location.lng();
+          this.setMapView(loc);
+
           this.zoom = 12;
         });
       });
@@ -91,15 +93,18 @@ export class HomeComponent implements OnInit {
 
   }
 
+  setMapView(loc) {
+    let a = L.latLng(loc.latitude, loc.longitude);
+    this.map.setView(a, 14);
+  }
+
   getLocation() {
     if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(
             position => {
                 console.log(position)
                 this.geolocationPosition = position;
-                let a = L.latLng(this.geolocationPosition.coords.latitude, this.geolocationPosition.coords.longitude);
-                console.log(a)
-                this.map.setView(a, 14);
+                this.setMapView(this.geolocationPosition.coords)
             },
             error => {
                 switch (error.code) {

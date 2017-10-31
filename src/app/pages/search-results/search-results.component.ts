@@ -75,11 +75,10 @@ export class SearchResultsComponent implements OnInit {
         })
     };
 
-    this.map = L.map("map");
-    this.map.setView([39.952455, -75.163594], 14);
-    this.baseMaps.CartoDB.addTo(this.map);
-
     this.api.getTransactions(a).then(res => {
+      this.map = L.map("map");
+      this.map.setView([39.952455, -75.163594], 14);
+      this.baseMaps.CartoDB.addTo(this.map);
       this.api.transactions.forEach(tr => {
         if (tr.point) {
           if (tr.point.latitude && tr.point.longitude) {
@@ -96,6 +95,8 @@ export class SearchResultsComponent implements OnInit {
         console.log(tr)
       })
     });
+
+    this.api.get
 
     //this.api.getData().then(data => {
     //
@@ -125,7 +126,8 @@ export class SearchResultsComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  goToProfile() {
+  goToProfile(entity) {
+    console.log(entity)
     this.router.navigate(['/profile']);
   }
 

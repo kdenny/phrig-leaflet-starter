@@ -88,13 +88,10 @@ body {
   display: inline;
 }
 
-/*.candidate-card {*/
-  /*margin-left: 20px;*/
-/*}*/
+.entity-card:hover {
+  cursor:pointer;
+}
 
-/*.candidate-card:hover {*/
-  /*background-color: yellow;*/
-/*}*/
 
 .candidate-card:hover {
   margin-left: 20px;
