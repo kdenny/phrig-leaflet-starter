@@ -60,6 +60,7 @@ body {
   padding-top:10px;
   padding-bottom:5px;
   color: #82CCE2;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .navbar-brand small {
@@ -67,6 +68,7 @@ body {
   font-size:22px;
   margin-top: 10px;
   color: #FFCE00;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .nav-logo {
